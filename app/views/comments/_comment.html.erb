@@ -1,0 +1,6 @@
+<tr>
+  <td><%= comment.text.html_safe %></td>
+  <td><%= link_to comment.user.display_name, comment.user if comment.user.present? %></td>
+  <td><%= link_to comment.comment_id, comment.link_on_site, :target => "_blank" %></td>
+  <td><%= time_ago_in_words(comment.comment_creation_date) %> ago</td>
+</tr>
