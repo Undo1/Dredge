@@ -4,6 +4,7 @@ gem 'rack-mini-profiler'
 gem 'flamegraph'
 gem 'mysql2', '< 0.4'
 gem 'puma'
+gem 'whenever', :require => false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -34,7 +35,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+
+group :development do
+  gem 'capistrano-rails', group: :development
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
+end
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
