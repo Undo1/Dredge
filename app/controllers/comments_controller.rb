@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all.order("created_at DESC").includes(:user)
+    @comments = Comment.all.order("comment_creation_date DESC").includes(:user)
   end
 
   # GET /comments/1
