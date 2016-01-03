@@ -12,7 +12,7 @@ module CommentsHelper
     comments = JSON.parse(res.body)["items"]
 
     comments.each do |comment|
-      c = Comment.new
+      c = Comment.find_or_create_by(:comment_id => comment["comment_id"])
 
       u = User.find_or_create_by(:user_id => comment["owner"]["user_id"])
       u.display_name = comment["owner"]["display_name"]
@@ -20,7 +20,6 @@ module CommentsHelper
 
       c.user = u
 
-      c.comment_id = comment["comment_id"]
       c.text = comment["body"]
       c.comment_creation_date = DateTime.strptime(comment["creation_date"].to_s,'%s')
       c.save!
